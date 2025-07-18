@@ -1,0 +1,265 @@
+---
+// Contact section with form and social links
+const socialLinks = [
+	{
+		name: "GitHub",
+		url: "https://github.com/hamdan",
+		icon: "github",
+		color: "hover:bg-gray-900"
+	},
+	{
+		name: "LinkedIn",
+		url: "https://linkedin.com/in/hamdan",
+		icon: "linkedin",
+		color: "hover:bg-blue-600"
+	},
+	{
+		name: "Twitter",
+		url: "https://twitter.com/hamdan",
+		icon: "twitter",
+		color: "hover:bg-blue-400"
+	},
+	{
+		name: "Email",
+		url: "mailto:hamdan@example.com",
+		icon: "email",
+		color: "hover:bg-red-500"
+	}
+];
+---
+
+<section class="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50 dark:from-slate-900 dark:via-slate-800 dark:to-slate-900 pt-24 pb-16">
+	<div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+		<!-- Section Header -->
+		<div class="text-center mb-16 animate-fade-in-up">
+			<h1 class="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">Get In Touch</h1>
+			<div class="w-24 h-1 bg-blue-600 mx-auto rounded-full mb-8"></div>
+			<p class="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
+				I'm always interested in new opportunities and exciting projects. 
+				Feel free to reach out if you'd like to work together or just say hello!
+			</p>
+		</div>
+
+		<div class="grid lg:grid-cols-2 gap-12">
+			<!-- Contact Form -->
+			<div class="animate-fade-in-left">
+				<h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">Send Me a Message</h2>
+				<form class="space-y-6">
+					<div class="grid md:grid-cols-2 gap-6">
+						<div>
+							<label for="firstName" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">First Name</label>
+							<input 
+								type="text" 
+								id="firstName" 
+								name="firstName" 
+								class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300 bg-white dark:bg-slate-700 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400"
+								required
+							>
+						</div>
+						<div>
+							<label for="lastName" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Last Name</label>
+							<input 
+								type="text" 
+								id="lastName" 
+								name="lastName" 
+								class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300 bg-white dark:bg-slate-700 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400"
+								required
+							>
+						</div>
+					</div>
+					
+					<div>
+						<label for="email" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Email Address</label>
+						<input 
+							type="email" 
+							id="email" 
+							name="email" 
+							class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300 bg-white dark:bg-slate-700 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400"
+							required
+						>
+					</div>
+					
+					<div>
+						<label for="subject" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Subject</label>
+						<input 
+							type="text" 
+							id="subject" 
+							name="subject" 
+							class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300 bg-white dark:bg-slate-700 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400"
+							required
+						>
+					</div>
+					
+					<div>
+						<label for="message" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Message</label>
+						<textarea 
+							id="message" 
+							name="message" 
+							rows="6" 
+							class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300 resize-none bg-white dark:bg-slate-700 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400"
+							placeholder="Tell me about your project or just say hello!"
+							required
+						></textarea>
+					</div>
+					
+					<button 
+						type="submit" 
+						class="w-full bg-blue-600 hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 text-white py-3 px-6 rounded-lg font-medium transition-all duration-300 hover:scale-105 hover:shadow-lg flex items-center justify-center space-x-2"
+					>
+						<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"></path>
+						</svg>
+						<span>Send Message</span>
+					</button>
+				</form>
+			</div>
+
+			<!-- Contact Info & Social Links -->
+			<div class="animate-fade-in-right">
+				<h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">Let's Connect</h2>
+				
+				<!-- Contact Info -->
+				<div class="bg-white dark:bg-slate-800 p-8 rounded-2xl shadow-lg mb-8">
+					<h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">Contact Information</h3>
+					<div class="space-y-4">
+						<div class="flex items-center space-x-3">
+							<div class="w-10 h-10 bg-blue-100 dark:bg-blue-900/30 rounded-full flex items-center justify-center">
+								<svg class="w-5 h-5 text-blue-600 dark:text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+								</svg>
+							</div>
+							<div>
+								<p class="text-sm text-gray-600 dark:text-gray-400">Email</p>
+								<p class="font-medium text-gray-900 dark:text-white">hamdan@example.com</p>
+							</div>
+						</div>
+						
+						<div class="flex items-center space-x-3">
+							<div class="w-10 h-10 bg-green-100 dark:bg-green-900/30 rounded-full flex items-center justify-center">
+								<svg class="w-5 h-5 text-green-600 dark:text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+								</svg>
+							</div>
+							<div>
+								<p class="text-sm text-gray-600 dark:text-gray-400">Location</p>
+								<p class="font-medium text-gray-900 dark:text-white">San Francisco, CA</p>
+							</div>
+						</div>
+						
+						<div class="flex items-center space-x-3">
+							<div class="w-10 h-10 bg-purple-100 dark:bg-purple-900/30 rounded-full flex items-center justify-center">
+								<svg class="w-5 h-5 text-purple-600 dark:text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+								</svg>
+							</div>
+							<div>
+								<p class="text-sm text-gray-600 dark:text-gray-400">Response Time</p>
+								<p class="font-medium text-gray-900 dark:text-white">Within 24 hours</p>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<!-- Social Links -->
+				<div class="bg-white dark:bg-slate-800 p-8 rounded-2xl shadow-lg">
+					<h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-6">Follow Me</h3>
+					<div class="grid grid-cols-2 gap-4">
+						{socialLinks.map((social) => (
+							<a 
+								href={social.url}
+								target="_blank"
+								rel="noopener noreferrer"
+								class="flex items-center space-x-3 p-4 rounded-lg border border-gray-200 dark:border-gray-600 hover:shadow-md transition-all duration-300 hover:scale-105 {social.color}"
+							>
+								<div class="w-8 h-8 bg-gray-100 dark:bg-gray-700 rounded-full flex items-center justify-center">
+									<span class="text-lg">
+										{social.icon === 'github' && '🐙'}
+										{social.icon === 'linkedin' && '💼'}
+										{social.icon === 'twitter' && '🐦'}
+										{social.icon === 'email' && '📧'}
+									</span>
+								</div>
+								<span class="font-medium text-gray-900 dark:text-white">{social.name}</span>
+							</a>
+						))}
+					</div>
+				</div>
+
+				<!-- Quick Response -->
+				<div class="mt-8 bg-gradient-to-r from-blue-500 to-purple-600 p-6 rounded-2xl text-white">
+					<h3 class="text-lg font-semibold mb-2">Quick Response</h3>
+					<p class="text-blue-100 text-sm">
+						I typically respond to all messages within 24 hours. 
+						For urgent matters, feel free to reach out on social media!
+					</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<style>
+	.animate-fade-in-up {
+		animation: fadeInUp 0.8s ease-out forwards;
+		opacity: 0;
+		transform: translateY(30px);
+	}
+
+	.animate-fade-in-left {
+		animation: fadeInLeft 1s ease-out 0.2s forwards;
+		opacity: 0;
+		transform: translateX(-50px);
+	}
+
+	.animate-fade-in-right {
+		animation: fadeInRight 1s ease-out 0.4s forwards;
+		opacity: 0;
+		transform: translateX(50px);
+	}
+
+	@keyframes fadeInUp {
+		to {
+			opacity: 1;
+			transform: translateY(0);
+		}
+	}
+
+	@keyframes fadeInLeft {
+		to {
+			opacity: 1;
+			transform: translateX(0);
+		}
+	}
+
+	@keyframes fadeInRight {
+		to {
+			opacity: 1;
+			transform: translateX(0);
+		}
+	}
+</style>
+
+<script>
+	// Form submission handling
+	document.addEventListener('DOMContentLoaded', function() {
+		const form = document.querySelector('form');
+		
+		if (form) {
+			form.addEventListener('submit', function(e) {
+				e.preventDefault();
+				
+				// Get form data
+				const formData = new FormData(form);
+				const data = Object.fromEntries(formData);
+				
+				// Here you would typically send the data to your backend
+				console.log('Form submitted:', data);
+				
+				// Show success message (you can customize this)
+				alert('Thank you for your message! I\'ll get back to you soon.');
+				form.reset();
+			});
+		}
+	});
+</script> 

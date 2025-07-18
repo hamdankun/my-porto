@@ -1,0 +1,270 @@
+---
+const navItems = [
+	{ name: 'Home', href: '/' },
+	{ name: 'About', href: '/about' },
+	{ name: 'Projects', href: '/projects' },
+	{ name: 'Skills', href: '/skills' },
+	{ name: 'Experience', href: '/experience' },
+	{ name: 'Contact', href: '/contact' }
+];
+
+// Get current pathname
+const currentPath = Astro.url.pathname;
+
+// Function to check if a nav item is active
+function isActive(href: string) {
+	if (href === '/') {
+		return currentPath === '/';
+	}
+	return currentPath.startsWith(href);
+}
+---
+
+<nav class="fixed top-0 w-full bg-gradient-to-r from-gray-50/90 via-purple-50/90 to-blue-50/90 dark:from-slate-900/90 dark:via-purple-900/90 dark:to-slate-900/90 backdrop-blur-md z-50 border-b border-purple-200/50 dark:border-purple-800/50 shadow-lg">
+	<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+		<div class="flex justify-between items-center h-16">
+			<div class="flex-shrink-0">
+				<a href="/" class="text-2xl font-bold bg-gradient-to-r from-purple-400 via-pink-400 to-blue-400 bg-clip-text text-transparent hover:scale-105 transition-transform duration-300">
+					Hamdan
+				</a>
+			</div>
+			
+			<!-- Desktop Navigation -->
+			<div class="hidden md:block">
+				<div class="ml-10 flex items-baseline space-x-1">
+					{navItems.map((item) => {
+						const active = isActive(item.href);
+						return (
+							<a
+								href={item.href}
+								class={`relative px-4 py-2 rounded-lg transition-all duration-300 hover:scale-105 group ${
+									active 
+										? 'text-purple-600 dark:text-purple-400 font-medium' 
+										: 'text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400'
+								}`}
+							>
+								<span class="relative z-10">{item.name}</span>
+								<div class={`absolute inset-0 rounded-lg transition-all duration-300 ${
+									active 
+										? 'bg-purple-100/60 dark:bg-purple-900/40' 
+										: 'bg-gradient-to-r from-purple-100/50 to-blue-100/50 dark:from-purple-900/50 dark:to-blue-900/50 opacity-0 group-hover:opacity-100'
+								}`}></div>
+								<div class={`absolute bottom-0 left-1/2 transform -translate-x-1/2 h-0.5 bg-gradient-to-r from-purple-400 to-blue-400 transition-all duration-300 rounded-full ${
+									active ? 'w-8' : 'w-0 group-hover:w-8'
+								}`}></div>
+							</a>
+						);
+					})}
+				</div>
+			</div>
+			
+			<!-- Desktop Theme Toggle -->
+			<div class="hidden md:flex items-center space-x-4">
+				<button 
+					id="theme-toggle"
+					class="p-2 rounded-lg text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400 transition-colors duration-300 border border-gray-300 dark:border-gray-600 hover:border-purple-400 dark:hover:border-purple-400"
+					aria-label="Toggle theme"
+				>
+					<svg id="sun-icon" class="w-5 h-5 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>
+					</svg>
+					<svg id="moon-icon" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
+					</svg>
+				</button>
+			</div>
+			
+			<!-- Mobile menu button and theme toggle -->
+			<div class="md:hidden flex items-center space-x-2">
+				<button 
+					id="mobile-theme-toggle"
+					class="p-2 rounded-lg text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400 transition-colors duration-300"
+					aria-label="Toggle theme"
+				>
+					<svg id="mobile-sun-icon" class="w-5 h-5 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>
+					</svg>
+					<svg id="mobile-moon-icon" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
+					</svg>
+				</button>
+				<button 
+					id="mobile-menu-button"
+					class="text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400 focus:outline-none transition-colors duration-300"
+					aria-label="Toggle mobile menu"
+				>
+					<svg id="menu-icon" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+					</svg>
+				</button>
+			</div>
+		</div>
+		
+		<!-- Mobile Navigation Menu -->
+		<div id="mobile-menu" class="hidden md:hidden">
+			<div class="px-2 pt-2 pb-3 space-y-1 bg-white/95 dark:bg-slate-900/95 backdrop-blur-md rounded-lg mt-2 border border-purple-500/20">
+				{navItems.map((item) => {
+					const active = isActive(item.href);
+					return (
+						<a
+							href={item.href}
+							class={`block px-3 py-2 rounded-md text-base font-medium transition-all duration-300 relative ${
+								active 
+									? 'text-purple-600 dark:text-purple-400 bg-purple-50/80 dark:bg-purple-900/30' 
+									: 'text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400 hover:bg-purple-50/50 dark:hover:bg-purple-900/20'
+							}`}
+						>
+							<span class="relative z-10">{item.name}</span>
+							{active && (
+								<div class="absolute left-0 top-1/2 transform -translate-y-1/2 w-1 h-6 bg-gradient-to-b from-purple-400 to-blue-400 rounded-r-full"></div>
+							)}
+						</a>
+					);
+				})}
+			</div>
+		</div>
+	</div>
+</nav>
+
+<style>
+	nav {
+		animation: slideDown 0.5s ease-out;
+		box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+	}
+
+	@keyframes slideDown {
+		from {
+			transform: translateY(-100%);
+			opacity: 0;
+		}
+		to {
+			transform: translateY(0);
+			opacity: 1;
+		}
+	}
+
+	/* Gradient text animation for logo */
+	nav a[href="/"] {
+		background-size: 200% 200%;
+		animation: gradientShift 3s ease infinite;
+	}
+
+	@keyframes gradientShift {
+		0%, 100% {
+			background-position: 0% 50%;
+		}
+		50% {
+			background-position: 100% 50%;
+		}
+	}
+
+	/* Hover effects for nav items */
+	nav a:not([href="/"]) {
+		position: relative;
+		overflow: hidden;
+	}
+
+	nav a:not([href="/"]):before {
+		content: '';
+		position: absolute;
+		top: 0;
+		left: -100%;
+		width: 100%;
+		height: 100%;
+		background: linear-gradient(90deg, transparent, rgba(168, 85, 247, 0.2), transparent);
+		transition: left 0.5s;
+	}
+
+	nav a:not([href="/"]):hover:before {
+		left: 100%;
+	}
+</style>
+
+<script>
+	// Theme toggle functionality
+	function initTheme() {
+		const savedTheme = localStorage.getItem('theme');
+		const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+		
+		if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+			document.documentElement.classList.add('dark');
+			updateThemeIcons(true);
+		} else {
+			document.documentElement.classList.remove('dark');
+			updateThemeIcons(false);
+		}
+	}
+
+	function toggleTheme() {
+		const isDark = document.documentElement.classList.contains('dark');
+		
+		if (isDark) {
+			document.documentElement.classList.remove('dark');
+			localStorage.setItem('theme', 'light');
+			updateThemeIcons(false);
+		} else {
+			document.documentElement.classList.add('dark');
+			localStorage.setItem('theme', 'dark');
+			updateThemeIcons(true);
+		}
+	}
+
+	function updateThemeIcons(isDark: boolean) {
+		const sunIcon = document.getElementById('sun-icon');
+		const moonIcon = document.getElementById('moon-icon');
+		const mobileSunIcon = document.getElementById('mobile-sun-icon');
+		const mobileMoonIcon = document.getElementById('mobile-moon-icon');
+		
+		if (isDark) {
+			if (sunIcon) sunIcon.classList.remove('hidden');
+			if (moonIcon) moonIcon.classList.add('hidden');
+			if (mobileSunIcon) mobileSunIcon.classList.remove('hidden');
+			if (mobileMoonIcon) mobileMoonIcon.classList.add('hidden');
+		} else {
+			if (sunIcon) sunIcon.classList.add('hidden');
+			if (moonIcon) moonIcon.classList.remove('hidden');
+			if (mobileSunIcon) mobileSunIcon.classList.add('hidden');
+			if (mobileMoonIcon) mobileMoonIcon.classList.remove('hidden');
+		}
+	}
+
+	// Initialize theme when DOM is ready
+	if (document.readyState === 'loading') {
+		document.addEventListener('DOMContentLoaded', initTheme);
+	} else {
+		initTheme();
+	}
+
+	// Add event listeners when DOM is ready
+	document.addEventListener('DOMContentLoaded', function() {
+		const themeToggle = document.getElementById('theme-toggle');
+		const mobileThemeToggle = document.getElementById('mobile-theme-toggle');
+		const mobileMenuButton = document.getElementById('mobile-menu-button');
+		const mobileMenu = document.getElementById('mobile-menu');
+
+		// Desktop theme toggle
+		if (themeToggle) {
+			themeToggle.addEventListener('click', function(e) {
+				e.preventDefault();
+				e.stopPropagation();
+				toggleTheme();
+			});
+		}
+
+		// Mobile theme toggle
+		if (mobileThemeToggle) {
+			mobileThemeToggle.addEventListener('click', function(e) {
+				e.preventDefault();
+				e.stopPropagation();
+				toggleTheme();
+			});
+		}
+
+		// Mobile menu button
+		if (mobileMenuButton && mobileMenu) {
+			mobileMenuButton.addEventListener('click', function() {
+				mobileMenu.classList.toggle('hidden');
+			});
+		}
+	});
+</script> 

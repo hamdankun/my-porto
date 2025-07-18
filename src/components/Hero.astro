@@ -1,0 +1,314 @@
+---
+// Enhanced Hero section with advanced animations and modern design
+---
+
+<section class="min-h-screen relative overflow-hidden bg-gradient-to-br from-gray-50 via-purple-50 to-blue-50 dark:from-slate-900 dark:via-purple-900 dark:to-slate-900 pt-16">
+	<!-- Animated Background Elements -->
+	<div class="absolute inset-0">
+		<!-- Floating particles -->
+		<div class="particles-container">
+			{Array.from({ length: 50 }).map((_, i) => (
+				<div 
+					class="particle"
+					style={`--delay: ${Math.random() * 20}s; --duration: ${10 + Math.random() * 20}s; --size: ${2 + Math.random() * 4}px;`}
+				></div>
+			))}
+		</div>
+		
+		<!-- Gradient orbs -->
+		<div class="absolute top-20 left-20 w-72 h-72 bg-purple-500 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse"></div>
+		<div class="absolute top-40 right-20 w-96 h-96 bg-blue-500 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse animation-delay-1000"></div>
+		<div class="absolute bottom-20 left-1/2 w-80 h-80 bg-pink-500 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse animation-delay-2000"></div>
+	</div>
+
+	<!-- Main Content -->
+	<div class="relative z-10 flex items-center justify-center min-h-screen">
+		<div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+			<div class="space-y-12">
+				<!-- Animated greeting with typewriter effect -->
+				<div class="animate-fade-in-up">
+					<div class="text-sm md:text-base text-purple-600 dark:text-purple-300 mb-4 font-mono animate-pulse">
+						<span class="typing-text">Hello World! I'm</span>
+					</div>
+					<h1 class="text-5xl md:text-8xl font-bold text-gray-900 dark:text-white mb-6 leading-tight">
+						<span class="bg-gradient-to-r from-purple-400 via-pink-400 to-blue-400 bg-clip-text text-transparent animate-gradient">
+							Hamdan Hanafi
+						</span>
+					</h1>
+				</div>
+				
+				<!-- Animated subtitle with rotating words -->
+				<div class="animate-fade-in-up animation-delay-300">
+					<div class="text-xl md:text-3xl text-gray-700 dark:text-gray-300 mb-8 text-center mx-auto flex justify-center">
+						<span class="rotating-text text-purple-600 dark:text-purple-400 font-semibold w-full">
+							<span class="rotating-word">Full Stack Developer</span>
+							<span class="rotating-word">Creative Problem Solver</span>
+							<span class="rotating-word">Tech Innovator</span>
+						</span>
+					</div>
+				</div>
+				
+				<!-- Enhanced description -->
+				<div class="animate-fade-in-up animation-delay-600">
+					<p class="text-lg md:text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto mb-12 leading-relaxed">
+						Crafting digital experiences that blend innovation with elegance. 
+						Passionate about turning complex problems into simple, beautiful solutions.
+					</p>
+				</div>
+				
+				<!-- Enhanced CTA buttons with hover effects -->
+				<div class="animate-fade-in-up animation-delay-900 flex flex-col sm:flex-row gap-6 justify-center">
+					<a 
+						href="/projects" 
+						class="group relative px-8 py-4 bg-gradient-to-r from-purple-600 to-blue-600 text-white rounded-full font-semibold text-lg transition-all duration-500 hover:scale-110 hover:shadow-2xl hover:shadow-purple-500/25 overflow-hidden"
+					>
+						<span class="relative z-10">Explore My Work</span>
+						<div class="absolute inset-0 bg-gradient-to-r from-purple-700 to-blue-700 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+						<div class="absolute inset-0 bg-white/20 transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-700"></div>
+					</a>
+					
+					<a 
+						href="/contact" 
+						class="group relative px-8 py-4 border-2 border-purple-600 dark:border-purple-400 text-purple-600 dark:text-purple-400 rounded-full font-semibold text-lg transition-all duration-500 hover:scale-110 hover:bg-purple-400 hover:text-white hover:shadow-2xl hover:shadow-purple-400/25"
+					>
+						<span class="relative z-10">Let's Connect</span>
+					</a>
+				</div>
+				
+				<!-- Tech stack badges -->
+				<div class="animate-fade-in-up animation-delay-1200">
+					<p class="text-gray-600 dark:text-gray-500 mb-6 text-sm uppercase tracking-wider">Tech Stack</p>
+					<div class="flex flex-wrap justify-center gap-4">
+						{['React', 'Node.js', 'TypeScript', 'Astro', 'Tailwind CSS'].map((tech, index) => (
+							<div 
+								class="px-4 py-2 bg-gray-900/10 dark:bg-white/10 backdrop-blur-sm rounded-full text-gray-700 dark:text-gray-300 text-sm font-medium border border-gray-300/20 dark:border-white/20 hover:bg-gray-900/20 dark:hover:bg-white/20 hover:scale-110 transition-all duration-300"
+								style={`animation-delay: ${1.5 + index * 0.1}s`}
+							>
+								{tech}
+							</div>
+						))}
+					</div>
+				</div>
+				
+			</div>
+		</div>
+	</div>
+
+	<!-- Floating elements -->
+	<div class="absolute top-1/4 left-10 w-2 h-2 bg-purple-400 rounded-full animate-ping"></div>
+	<div class="absolute top-1/3 right-20 w-3 h-3 bg-blue-400 rounded-full animate-ping animation-delay-1000"></div>
+	<div class="absolute bottom-1/4 left-20 w-2 h-2 bg-pink-400 rounded-full animate-ping animation-delay-2000"></div>
+</section>
+
+<style>
+	/* Particle animations */
+	.particles-container {
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		overflow: hidden;
+	}
+
+	.particle {
+		position: absolute;
+		width: var(--size);
+		height: var(--size);
+		background: linear-gradient(45deg, #a855f7, #3b82f6, #ec4899);
+		border-radius: 50%;
+		animation: float var(--duration) ease-in-out infinite;
+		animation-delay: var(--delay);
+		opacity: 0.6;
+	}
+
+	@keyframes float {
+		0%, 100% {
+			transform: translateY(100vh) translateX(0) rotate(0deg);
+			opacity: 0;
+		}
+		10% {
+			opacity: 0.6;
+		}
+		90% {
+			opacity: 0.6;
+		}
+		100% {
+			transform: translateY(-100px) translateX(100px) rotate(360deg);
+			opacity: 0;
+		}
+	}
+
+	/* Gradient animation */
+	.animate-gradient {
+		background-size: 200% 200%;
+		animation: gradientShift 3s ease infinite;
+	}
+
+	@keyframes gradientShift {
+		0%, 100% {
+			background-position: 0% 50%;
+		}
+		50% {
+			background-position: 100% 50%;
+		}
+	}
+
+	/* Rotating text animation */
+	.rotating-text {
+		display: inline-block;
+		position: relative;
+		text-align: center;
+		width: 100%;
+	}
+
+	.rotating-word {
+		display: block;
+		animation: rotateWords 8s linear infinite 0s;
+		opacity: 0;
+		position: absolute;
+		top: 0;
+		transform: translateX(-50%);
+		text-align: center;
+		width: 100%;
+	}
+
+	.rotating-word:nth-child(2) {
+		animation-delay: 2s;
+	}
+
+	.rotating-word:nth-child(3) {
+		animation-delay: 4s;
+	}
+
+	.rotating-word:nth-child(4) {
+		animation-delay: 6s;
+	}
+
+	@keyframes rotateWords {
+		0%, 20% {
+			opacity: 1;
+			transform: translateY(0);
+		}
+		25%, 100% {
+			opacity: 0;
+			transform: translateY(-20px);
+		}
+	}
+
+	/* Enhanced fade-in animations */
+	.animate-fade-in-up {
+		animation: fadeInUp 1s ease-out forwards;
+		opacity: 0;
+		transform: translateY(50px);
+	}
+
+	.animation-delay-300 {
+		animation-delay: 0.3s;
+	}
+
+	.animation-delay-600 {
+		animation-delay: 0.6s;
+	}
+
+	.animation-delay-900 {
+		animation-delay: 0.9s;
+	}
+
+	.animation-delay-1200 {
+		animation-delay: 1.2s;
+	}
+
+	.animation-delay-1500 {
+		animation-delay: 1.5s;
+	}
+
+	.animation-delay-1000 {
+		animation-delay: 1s;
+	}
+
+	.animation-delay-2000 {
+		animation-delay: 2s;
+	}
+
+	@keyframes fadeInUp {
+		to {
+			opacity: 1;
+			transform: translateY(0);
+		}
+	}
+
+	/* Typing effect */
+	.typing-text {
+		border-right: 2px solid #a855f7;
+		animation: typing 3s steps(20) infinite, blink 0.75s step-end infinite;
+		white-space: nowrap;
+		overflow: hidden;
+	}
+
+	@keyframes typing {
+		0%, 90%, 100% {
+			width: 0;
+		}
+		30%, 60% {
+			width: 100%;
+		}
+	}
+
+	@keyframes blink {
+		from, to {
+			border-color: transparent;
+		}
+		50% {
+			border-color: #a855f7;
+		}
+	}
+
+	/* Hover effects for tech badges */
+	.tech-badge {
+		transition: all 0.3s ease;
+	}
+
+	.tech-badge:hover {
+		transform: translateY(-2px);
+		box-shadow: 0 10px 25px rgba(168, 85, 247, 0.3);
+	}
+</style>
+
+<script>
+	// Enhanced scroll functionality
+	document.addEventListener('DOMContentLoaded', function() {
+		const scrollIndicator = document.querySelector('.animate-bounce');
+		
+		if (scrollIndicator) {
+			scrollIndicator.addEventListener('click', function() {
+				// Smooth scroll to the next section
+				const nextSection = document.querySelector('section:not(.min-h-screen)') || 
+									document.querySelector('#about') || 
+									document.querySelector('[href="/about"]');
+				
+				if (nextSection) {
+					nextSection.scrollIntoView({ 
+						behavior: 'smooth',
+						block: 'start'
+					});
+				} else {
+					// Fallback: scroll down by viewport height
+					window.scrollTo({
+						top: window.innerHeight,
+						behavior: 'smooth'
+					});
+				}
+			});
+		}
+
+		// Add parallax effect to particles
+		window.addEventListener('scroll', function() {
+			const scrolled = window.pageYOffset;
+			const particles = document.querySelectorAll('.particle');
+			
+			particles.forEach((particle, index) => {
+				const speed = 0.5 + (index % 3) * 0.2;
+				(particle as HTMLElement).style.transform = `translateY(${scrolled * speed}px)`;
+			});
+		});
+	});
+</script> 

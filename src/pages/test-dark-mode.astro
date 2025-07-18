@@ -1,0 +1,145 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navigation from '../components/Navigation.astro';
+---
+
+<Layout>
+	<Navigation />
+	
+	<main class="min-h-screen bg-white dark:bg-slate-900 text-gray-900 dark:text-white transition-colors duration-300 pt-20">
+		<div class="max-w-4xl mx-auto px-4 py-12">
+			<h1 class="text-4xl font-bold mb-8">Dark Mode Test</h1>
+			
+			<div class="space-y-8">
+				<!-- Test Section 1: Basic Elements -->
+				<section class="p-6 bg-gray-100 dark:bg-slate-800 rounded-lg">
+					<h2 class="text-2xl font-semibold mb-4">Basic Elements</h2>
+					<div class="space-y-4">
+						<p class="text-gray-700 dark:text-gray-300">
+							This is a test paragraph to verify text colors in both light and dark modes.
+						</p>
+						<button class="px-4 py-2 bg-purple-600 text-white rounded hover:bg-purple-700 transition-colors">
+							Test Button
+						</button>
+						<div class="p-4 border border-gray-300 dark:border-gray-600 rounded">
+							Border test element
+						</div>
+					</div>
+				</section>
+				
+				<!-- Test Section 2: Cards -->
+				<section class="grid grid-cols-1 md:grid-cols-2 gap-6">
+					<div class="p-6 bg-white dark:bg-slate-800 border border-gray-200 dark:border-gray-700 rounded-lg shadow-lg">
+						<h3 class="text-lg font-semibold mb-2">Card 1</h3>
+						<p class="text-gray-600 dark:text-gray-400">
+							This card should have different background and border colors in dark mode.
+						</p>
+					</div>
+					<div class="p-6 bg-gradient-to-r from-purple-50 to-blue-50 dark:from-purple-900 dark:to-blue-900 border border-purple-200 dark:border-purple-700 rounded-lg">
+						<h3 class="text-lg font-semibold mb-2">Card 2</h3>
+						<p class="text-gray-700 dark:text-gray-300">
+							This card uses gradient backgrounds that change with the theme.
+						</p>
+					</div>
+				</section>
+				
+				<!-- Test Section 3: Form Elements -->
+				<section class="p-6 bg-gray-50 dark:bg-slate-800 rounded-lg">
+					<h2 class="text-2xl font-semibold mb-4">Form Elements</h2>
+					<div class="space-y-4">
+						<input 
+							type="text" 
+							placeholder="Test input field" 
+							class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded bg-white dark:bg-slate-700 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400"
+						>
+						<textarea 
+							placeholder="Test textarea" 
+							class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded bg-white dark:bg-slate-700 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400"
+							rows="3"
+						></textarea>
+					</div>
+				</section>
+				
+				<!-- Test Section 4: Dark Mode Indicators -->
+				<section class="p-6 bg-gray-900 dark:bg-slate-900 rounded-lg">
+					<h2 class="text-2xl font-semibold mb-4 text-white">Dark Mode Indicators</h2>
+					<div class="space-y-4">
+						<div class="flex items-center space-x-4">
+							<div class="w-4 h-4 bg-red-500 dark:bg-blue-500 rounded border-2 border-current transition-colors duration-300"></div>
+							<span class="text-white">This indicator should change color in dark mode</span>
+						</div>
+						<div class="text-green-400">
+							This text should remain green in both themes
+						</div>
+					</div>
+				</section>
+				
+				<!-- Test Section 5: Status Indicators -->
+				<section class="p-6 bg-white dark:bg-slate-800 border border-gray-200 dark:border-gray-700 rounded-lg">
+					<h2 class="text-2xl font-semibold mb-4">Theme Status</h2>
+					<div class="flex items-center space-x-4">
+						<div id="theme-indicator" class="px-4 py-2 bg-gray-200 dark:bg-gray-700 rounded-lg">
+							Current theme: <span id="current-theme-text">Loading...</span>
+						</div>
+						<button 
+							id="test-toggle"
+							class="px-4 py-2 bg-purple-600 text-white rounded hover:bg-purple-700 transition-colors"
+						>
+							Toggle Theme
+						</button>
+					</div>
+				</section>
+			</div>
+		</div>
+	</main>
+</Layout>
+
+<script>
+	// Test theme functionality
+	document.addEventListener('DOMContentLoaded', function() {
+		const testToggle = document.getElementById('test-toggle');
+		const currentThemeText = document.getElementById('current-theme-text');
+		
+		function updateThemeStatus() {
+			const isDark = document.documentElement.classList.contains('dark');
+			if (currentThemeText) {
+				currentThemeText.textContent = isDark ? 'Dark' : 'Light';
+			}
+		}
+		
+		// Update status on page load
+		updateThemeStatus();
+		
+		// Test toggle button
+		if (testToggle) {
+			testToggle.addEventListener('click', function() {
+				const isDark = document.documentElement.classList.contains('dark');
+				
+				if (isDark) {
+					document.documentElement.classList.remove('dark');
+					localStorage.setItem('theme', 'light');
+				} else {
+					document.documentElement.classList.add('dark');
+					localStorage.setItem('theme', 'dark');
+				}
+				
+				updateThemeStatus();
+				console.log('Theme toggled via test button');
+			});
+		}
+		
+		// Watch for theme changes
+		const observer = new MutationObserver(function(mutations) {
+			mutations.forEach(function(mutation) {
+				if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
+					updateThemeStatus();
+				}
+			});
+		});
+		
+		observer.observe(document.documentElement, {
+			attributes: true,
+			attributeFilter: ['class']
+		});
+	});
+</script> 
