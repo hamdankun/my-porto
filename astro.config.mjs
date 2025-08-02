@@ -5,9 +5,7 @@ import tailwindcss from '@tailwindcss/vite';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://hamdankun.github.io/my-porto',
-  base: 'my-porto',
-  outDir: 'docs',
+  outDir: 'dist',
   integrations: [react()],
   vite: {
     plugins: [tailwindcss()]
